@@ -1,4 +1,7 @@
 import React from "react";
+import { useState, useEffect} from 'react';
+import { ContactForm } from '/Users/bea/Desktop/DevProject/react_challenge_start/src/components/contactForm/ContactForm.js';
+import { TileList } from '/Users/bea/Desktop/DevProject/react_challenge_start/src/components/tileList/TileList.js';
 
 export const ContactsPage = () => {
   /*

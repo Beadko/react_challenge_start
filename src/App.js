@@ -6,18 +6,32 @@ import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage
 import { ContactsPage } from "./containers/contactsPage/ContactsPage";
 
 function App() {
-  let [contacts, setContacts] = useState([]);
-  let [appointments, setAppointments] = useState([]);
+  const [contacts, setContacts] = useState([]);
+  const [appointments, setAppointments] = useState([]);
+
 
   const ROUTES = {
     CONTACTS: "/contacts",
     APPOINTMENTS: "/appointments",
   };
 
-  useEffect = () => {
-    setContacts(contacts => [...contacts, newContacts]);
-    setAAppointments(appointments=> [...appointments, newAppointments]);
-  }
+    const addContact = (name, phone, email) => {
+      setContacts([...contacts,{
+        name: name,
+        phone: phone,
+        email: email
+      }])
+    }
+
+    const addAppointment = (title, contact, date, time)=> {
+      setAppointments([...appointments,{
+        title: title,
+        contact: contact,
+        date: date,
+        time: time
+      }]);
+    }
+    
 
   return (
     <>
@@ -36,11 +50,18 @@ function App() {
           </Route>
           <Route path={ROUTES.CONTACTS}>
              {this.props.CONTACTS}
-            <ContactsPage />
+            <ContactsPage 
+              contacts={contacts}
+              addContact={addContact}
+            />
           </Route>
           <Route path={ROUTES.APPOINTMENTS}>
             {this.props.APPOINTMENTS}
-            <AppointmentsPage />
+            <AppointmentsPage 
+              appointments={appointments}
+              contacts={contacts}
+              addAppointment={addAppointment}
+            />
           </Route>
         </Switch>
       </main>
