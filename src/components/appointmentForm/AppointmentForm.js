@@ -1,4 +1,5 @@
 import React from "react";
+import { ContactPicker } from '../../components/contactPicker/ContactPicker'
 
 export const AppointmentForm = ({
   contacts,
