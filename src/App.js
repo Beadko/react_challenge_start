@@ -16,21 +16,27 @@ function App() {
   };
 
     const addContact = (name, phone, email) => {
-      setContacts([...contacts,{
-        name: name,
-        phone: phone,
-        email: email
-      }])
-    }
+      setContacts([
+        ...contacts,
+        {
+          name: name,
+          phone: phone,
+          email: email
+        },
+      ]);
+    };
 
     const addAppointment = (title, contact, date, time)=> {
-      setAppointments([...appointments,{
-        title: title,
-        contact: contact,
-        date: date,
-        time: time
-      }]);
-    }
+      setAppointments([
+        ...appointments,
+        {
+          title: title,
+          contact: contact,
+          date: date,
+          time: time
+        },
+      ]);
+    };
     
 
   return (
@@ -49,14 +55,12 @@ function App() {
             <Redirect to={ROUTES.CONTACTS} />
           </Route>
           <Route path={ROUTES.CONTACTS}>
-             {this.props.CONTACTS}
             <ContactsPage 
               contacts={contacts}
               addContact={addContact}
             />
           </Route>
           <Route path={ROUTES.APPOINTMENTS}>
-            {this.props.APPOINTMENTS}
             <AppointmentsPage 
               appointments={appointments}
               contacts={contacts}
